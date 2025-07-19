@@ -17,8 +17,8 @@ h1 {
   display: flex;
   flex-direction: row;
   overflow-x: auto; /* para scroll horizontal si no caben */
-  gap: 20px;
-  padding: 20px;
+  gap: 15px;
+  padding: 10px;
 }
 
 .semestre-container {
@@ -27,6 +27,16 @@ h1 {
   align-items: center; /* opcional para centrar el título */
   min-width: 220px; /* igual que .semestre para que no se achique */
   gap: 10px;
+  border: 2px solid #81d4fa; 
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #e3f2fd;
+}
+
+.semestre-container h2 {
+  margin: 0;
+  font-weight: bold;
+  color: #0277bd;
 }
 
 .semestre {
@@ -36,22 +46,21 @@ h1 {
   background-color: #e6f2fa;
   display: flex;
   flex-direction: column; /* para que los ramos estén en columna dentro */
-  gap: 10px;
+  gap: 8px;
 }
 
 /* Ramos como cuadros apretables */
 .ramo {
-  background-color: #b3d9ff;
-  padding: 10px;
-  border-radius: 6px;
   cursor: pointer;
-  user-select: none;
-  text-align: center;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 8px 15px;
+  border: 1.8px solid #64b5f6;
+  border-radius: 7px;
+  background-color: #bbdefb;
+  color: #0d47a1;
   font-weight: 600;
-  color: #0b3d91;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
+
 
 .ramo:hover {
   background-color: #99ccff;
@@ -70,6 +79,7 @@ h1 {
   text-decoration: line-through;
   opacity: 0.6;
   background-color: #90caf9;
+  color: #0d47a1;
 }
 
 .ramo.active {
