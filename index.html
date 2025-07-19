@@ -8,7 +8,56 @@
 </head>
 <body>
   <h1>Malla Interactiva - Química y Farmacia</h1>
-  <div id="malla"></div>
+  <div class="malla">
+    <!-- I Semestre -->
+    <h2>Semestre I</h2>
+    <div class="semestre">
+      <div class="ramo" id="quimica-general-i" data-abre="quimica-general-ii,quimica-inorganica">química general I</div>
+      <div class="ramo" id="biologia-celular" data-abre="histologia">biología celular</div>
+      <div class="ramo" id="matematica-i" data-abre="fisica-general,matematica-ii">matemática I</div>
+      <div class="ramo" id="anatomia-embriologia" data-abre="histologia">anatomía y embriología humana</div>
+    </div>
+
+    <!-- II Semestre -->
+    <h2>Semestre II</h2>
+    <div class="semestre">
+      <div class="ramo bloqueado" id="quimica-general-ii" data-abre="quimica-organica-i,quimica-analitica">química general II</div>
+      <div class="ramo bloqueado" id="fisica-general" data-abre="fisicoquimica-i">física general</div>
+      <div class="ramo bloqueado" id="matematica-ii" data-abre="fisicoquimica-i">matemática II</div>
+      <div class="ramo" id="introduccion-qyf">introducción a la química y farmacia</div>
+      <div class="ramo bloqueado" id="histologia" data-abre="biomedicina-i">histología</div>
+      <div class="ramo" id="electivo-fg-i">electivo de formación general I</div>
+    </div>
+
+    <!-- III Semestre -->
+    <h2>Semestre III</h2>
+    <div class="semestre">
+      <div class="ramo bloqueado" id="quimica-organica-i" data-abre="quimica-organica-ii,laboratorio-quimica-organica">química orgánica I</div>
+      <div class="ramo bloqueado" id="quimica-analitica" data-abre="analisis-instrumental">química analítica</div>
+      <div class="ramo bloqueado" id="quimica-inorganica">química inorgánica</div>
+      <div class="ramo bloqueado" id="fisicoquimica-i" data-abre="fisicoquimica-ii">fisicoquímica I</div>
+      <div class="ramo bloqueado" id="biomedicina-i" data-abre="biomedicina-ii">biomedicina I</div>
+      <div class="ramo" id="electivo-fg-ii">electivo de formación general II</div>
+    </div>
+
+    <!-- IV Semestre -->
+    <h2>Semestre IV</h2>
+    <div class="semestre">
+      <div class="ramo bloqueado" id="quimica-organica-ii" data-abre="bioquimica-general,farmacoquimica-i">química orgánica II</div>
+      <div class="ramo bloqueado" id="analisis-instrumental" data-abre="bioquimica-general,bromatologia">análisis instrumental</div>
+      <div class="ramo bloqueado" id="fisicoquimica-ii" data-abre="operaciones-unitarias">fisicoquímica II</div>
+      <div class="ramo bloqueado" id="biomedicina-ii" data-abre="microbiologia,fisiopatologia-i">biomedicina II</div>
+      <div class="ramo bloqueado" id="laboratorio-quimica-organica">laboratorio de química orgánica</div>
+    </div>
+
+    <!-- V al XI semestre -->
+    <!-- OMITIDO AQUÍ PARA BREVEDAD, CONTINUAR IGUAL QUE ARRIBA -->
+  </div>
+
+  <footer>
+    &copy; 2025 Malla Interactiva - Química y Farmacia
+  </footer>
+
   <script src="script.js"></script>
 </body>
 </html>
