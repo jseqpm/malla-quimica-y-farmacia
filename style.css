@@ -1,11 +1,14 @@
-/* estilos.css */
-
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: #f0f8ff;
   margin: 0;
   padding: 20px;
   color: #003366;
+}
+
+h1 {
+  text-align: center;
+  color: #004080;
 }
 
 h2 {
@@ -35,12 +38,13 @@ h2 {
   border-radius: 12px;
   padding: 10px 15px;
   cursor: pointer;
-  transition: 0.3s ease;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
   user-select: none;
-  font-size: 0.95em;
+  font-size: 1em;
   max-width: 250px;
   flex: 1 1 200px;
   box-shadow: 0 2px 4px rgba(0, 102, 204, 0.2);
+  color: #003366;
 }
 
 .ramo:hover {
@@ -51,6 +55,7 @@ h2 {
   background-color: #b3e6cc;
   border-color: #66cc99;
   color: #006644;
+  box-shadow: 0 2px 6px rgba(51, 153, 51, 0.5);
 }
 
 .ramo.bloqueado {
@@ -59,6 +64,7 @@ h2 {
   color: #999999;
   cursor: not-allowed;
   pointer-events: none;
+  box-shadow: none;
 }
 
 footer {
@@ -67,16 +73,3 @@ footer {
   font-size: 0.9em;
   color: #777;
 }
-
-/* Estructura por semestre con IDs para la lógica JS */
-
-/* Puedes usar este bloque como referencia visual en HTML:
-<div class="malla">
-  <h2>Semestre I</h2>
-  <div class="semestre">
-    <div class="ramo" id="quimica-general-i">química general I</div>
-    <div class="ramo" id="biologia-celular">biología celular</div>
-    ...
-  </div>
-</div>
-*/
