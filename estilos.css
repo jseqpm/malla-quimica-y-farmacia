@@ -23,7 +23,7 @@ h1 {
 
 .semestre-container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center; /* opcional para centrar el título */
   min-width: 220px; /* igual que .semestre para que no se achique */
   gap: 10px;
