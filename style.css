@@ -1,0 +1,25 @@
+
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background: #f2f2f2;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  background: #003366;
+  color: white;
+  padding: 10px;
+  margin: 0;
+}
+
+#network {
+  width: 100vw;
+  height: 90vh;
+  border: 1px solid lightgray;
+}
+
+.vis-network .vis-node {
+  border-radius: 10px !important;
+}
