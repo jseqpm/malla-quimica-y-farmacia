@@ -3,8 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   ramos.forEach(ramo => {
     ramo.addEventListener("click", () => {
-      if (ramo.classList.contains("bloqueado")) return;
-
+      if (ramo.classList.contains("bloqueado")) return; // No hacer nada si está bloqueado
       ramo.classList.toggle("aprobado");
 
       // Revisa todos los ramos bloqueados para ver si se pueden desbloquear
