@@ -1,92 +1,82 @@
-const ramos = [
-  { nombre: "química general I", abre: ["química general II", "química inorgánica"] },
-  { nombre: "biología celular", abre: ["histología"] },
-  { nombre: "matemática I", abre: ["física general", "matemática II"] },
-  { nombre: "anatomía y embriología humana", abre: ["histología"] },
-  { nombre: "química general II", abre: ["química orgánica I", "química analítica"] },
-  { nombre: "física general", abre: ["fisicoquímica I"] },
-  { nombre: "matemática II", abre: ["fisicoquímica I"] },
-  { nombre: "introducción a la química y farmacia", abre: [] },
-  { nombre: "histología", abre: ["biomedicina I"] },
-  { nombre: "electivo de formación general I", abre: [] },
-  { nombre: "química orgánica I", abre: ["química orgánica II", "laboratorio de química orgánica"] },
-  { nombre: "química analítica", abre: ["análisis instrumental"] },
-  { nombre: "química inorgánica", abre: [] },
-  { nombre: "fisicoquímica I", abre: ["fisicoquímica II"] },
-  { nombre: "biomedicina I", abre: ["biomedicina II"] },
-  { nombre: "electivo de formación general II", abre: [] },
-  { nombre: "química orgánica II", abre: ["bioquímica general", "farmacoquímica I"] },
-  { nombre: "análisis instrumental", abre: ["bioquímica general", "bromatología"] },
-  { nombre: "fisicoquímica II", abre: ["operaciones unitarias"] },
-  { nombre: "biomedicina II", abre: ["microbiología", "fisiopatología I"] },
-  { nombre: "laboratorio de química orgánica", abre: [] },
-  { nombre: "bioquímica general", abre: ["farmacología I", "bioquímica clínica"] },
-  { nombre: "fisiopatología I", abre: ["farmacología I", "fisiopatología II"] },
-  { nombre: "microbiología", abre: [] },
-  { nombre: "operaciones unitarias", abre: ["tecnología farmacéutica I"] },
-  { nombre: "bromatología", abre: [] },
-  { nombre: "ética", abre: ["salud pública", "administración y gestión farmacéutica"] },
-  { nombre: "farmacología I", abre: ["farmacología II"] },
-  { nombre: "farmacoquÍmica I", abre: ["farmacoquímica II"] },
-  { nombre: "fisiopatología II", abre: ["farmacología II"] },
-  { nombre: "salud pública", abre: ["epidemiologia estadística"] },
-  { nombre: "bioquímica clínica", abre: ["biología molecular"] },
-  { nombre: "farmacología II", abre: ["farmacia clínica I", "toxicología"] },
-  { nombre: "tecnología farmacéutica I", abre: ["tecnología farmacéutica II"] },
-  { nombre: "biología molecular", abre: [] },
-  { nombre: "farmacoquímica II", abre: [] },
-  { nombre: "administración y gestión farmacéutica", abre: ["desarrollo comunicacional estadística"] },
-  { nombre: "electivo de formación general III", abre: [] },
-  { nombre: "farmacia clínica I", abre: ["farmacia clínica II", "nutrición clínica"] },
-  { nombre: "tecnología farmacéutica II", abre: ["nutrición clínica", "legislación farmacéutica"] },
-  { nombre: "epidemiologia estadística", abre: ["metodología de investigación"] },
-  { nombre: "desarrollo comunicacional estadística", abre: [] },
-  { nombre: "toxicología", abre: [] },
-  { nombre: "electivo de formación general IV", abre: [] },
-  { nombre: "farmacia clínica II", abre: ["internado clínico"] },
-  { nombre: "nutrición clínica", abre: [] },
-  { nombre: "metodología de investigación", abre: [] },
-  { nombre: "legislación farmacéutica", abre: [] },
-  { nombre: "electivo de especialidad I", abre: [] },
-  { nombre: "internado clínico", abre: [] },
-  { nombre: "electivo de especialidad II", abre: [] },
-  { nombre: "electivo de especialidad III", abre: [] },
-  { nombre: "actividad de titulación", abre: [] },
-];
+/* estilos.css */
 
-const malla = document.getElementById("malla");
-
-const estadoRamos = {};
-
-ramos.forEach(ramo => {
-  estadoRamos[ramo.nombre] = "bloqueado";
-});
-
-// Desbloquear los iniciales
-[
-  "química general I", "biología celular", "matemática I", "anatomía y embriología humana"
-].forEach(nombre => estadoRamos[nombre] = "desbloqueado");
-
-function crearRamo(ramo) {
-  const div = document.createElement("div");
-  div.className = `ramo ${estadoRamos[ramo.nombre]}`;
-  div.innerText = ramo.nombre;
-  div.onclick = () => {
-    if (estadoRamos[ramo.nombre] !== "desbloqueado") return;
-    estadoRamos[ramo.nombre] = "aprobado";
-    div.classList.remove("desbloqueado");
-    div.classList.add("aprobado");
-    ramo.abre.forEach(nombre => {
-      if (estadoRamos[nombre] === "bloqueado") {
-        estadoRamos[nombre] = "desbloqueado";
-        const desbloquear = document.querySelector(`.ramo:not(.aprobado):not(.desbloqueado):not(.bloqueado):contains('${nombre}')`) ||
-                             Array.from(document.querySelectorAll('.ramo')).find(el => el.innerText === nombre);
-        if (desbloquear) desbloquear.classList.remove("bloqueado");
-        if (desbloquear) desbloquear.classList.add("desbloqueado");
-      }
-    });
-  };
-  malla.appendChild(div);
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f8ff;
+  margin: 0;
+  padding: 20px;
+  color: #003366;
 }
 
-ramos.forEach(crearRamo);
+h2 {
+  margin-top: 40px;
+  font-size: 1.6em;
+  color: #004080;
+  border-bottom: 2px solid #99ccff;
+  padding-bottom: 5px;
+}
+
+.malla {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.semestre {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  padding: 10px 0;
+}
+
+.ramo {
+  background-color: #e6f2ff;
+  border: 2px solid #99ccff;
+  border-radius: 12px;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  user-select: none;
+  font-size: 0.95em;
+  max-width: 250px;
+  flex: 1 1 200px;
+  box-shadow: 0 2px 4px rgba(0, 102, 204, 0.2);
+}
+
+.ramo:hover {
+  background-color: #cce6ff;
+}
+
+.ramo.aprobado {
+  background-color: #b3e6cc;
+  border-color: #66cc99;
+  color: #006644;
+}
+
+.ramo.bloqueado {
+  background-color: #f2f2f2;
+  border-color: #cccccc;
+  color: #999999;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+footer {
+  text-align: center;
+  margin-top: 50px;
+  font-size: 0.9em;
+  color: #777;
+}
+
+/* Estructura por semestre con IDs para la lógica JS */
+
+/* Puedes usar este bloque como referencia visual en HTML:
+<div class="malla">
+  <h2>Semestre I</h2>
+  <div class="semestre">
+    <div class="ramo" id="quimica-general-i">química general I</div>
+    <div class="ramo" id="biologia-celular">biología celular</div>
+    ...
+  </div>
+</div>
+*/
