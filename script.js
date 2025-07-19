@@ -3,12 +3,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   ramos.forEach(ramo => {
     ramo.addEventListener("click", () => {
-      if (ramo.classList.contains("bloqueado")) return; // No hacer nada si está bloqueado
+      if (ramo.classList.contains("bloqueado")) return;
+
+      // Alternar aprobado
       ramo.classList.toggle("aprobado");
 
-      // Revisa todos los ramos bloqueados para ver si se pueden desbloquear
+      // Actualizar bloqueo/desbloqueo de otros ramos según requisitos
       ramos.forEach(destino => {
-        if (destino.classList.contains("bloqueado")) {
+        if (destino.dataset.abre) {
           const requisitos = obtenerRequisitos(destino.id);
           const todosAprobados = requisitos.every(idR => {
             const r = document.getElementById(idR);
@@ -19,13 +21,14 @@ document.addEventListener("DOMContentLoaded", () => {
             destino.classList.remove("bloqueado");
           } else {
             destino.classList.add("bloqueado");
+            destino.classList.remove("aprobado"); // si está bloqueado no puede estar aprobado
           }
         }
       });
     });
   });
 
-  // Función que retorna un array con los ids de ramos que desbloquean el ramo pasado
+  // Función para obtener requisitos (los que "abren" el ramo)
   function obtenerRequisitos(idDestino) {
     let reqs = [];
     ramos.forEach(r => {
@@ -39,3 +42,4 @@ document.addEventListener("DOMContentLoaded", () => {
     return reqs;
   }
 });
+
