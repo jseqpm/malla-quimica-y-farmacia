@@ -5,36 +5,28 @@ document.addEventListener("DOMContentLoaded", () => {
     ramo.addEventListener("click", () => {
       if (ramo.classList.contains("bloqueado")) return;
 
-      ramo.classList.toggle("aprobado"); // Esto agrega o quita el tachado
+      ramo.classList.toggle("aprobado");
 
-      actualizarBloqueos(); // Actualiza los bloqueos/desbloqueos según aprobados
+      // Revisa todos los ramos bloqueados para ver si se pueden desbloquear
+      ramos.forEach(destino => {
+        if (destino.classList.contains("bloqueado")) {
+          const requisitos = obtenerRequisitos(destino.id);
+          const todosAprobados = requisitos.every(idR => {
+            const r = document.getElementById(idR);
+            return r && r.classList.contains("aprobado");
+          });
+
+          if (todosAprobados) {
+            destino.classList.remove("bloqueado");
+          } else {
+            destino.classList.add("bloqueado");
+          }
+        }
+      });
     });
   });
 
-  // Esta función actualiza todos los ramos bloqueados según si cumplen requisitos
-  function actualizarBloqueos() {
-    ramos.forEach(destino => {
-      if (destino.dataset.abre) return; // Los que abren otros no se bloquean aquí (si quieres puedes cambiar esta lógica)
-
-      if (destino.classList.contains("bloqueado") || !destino.classList.contains("aprobado")) {
-        // Verificamos requisitos para cada ramo bloqueado o no aprobado
-        const requisitos = obtenerRequisitos(destino.id);
-        const todosAprobados = requisitos.every(idR => {
-          const r = document.getElementById(idR);
-          return r && r.classList.contains("aprobado");
-        });
-
-        if (todosAprobados) {
-          destino.classList.remove("bloqueado");
-        } else {
-          destino.classList.add("bloqueado");
-          destino.classList.remove("aprobado"); // Si bloqueas, desapruebas automáticamente
-        }
-      }
-    });
-  }
-
-  // Obtener todos los IDs que son requisito para un ramo destino dado
+  // Función que retorna un array con los ids de ramos que desbloquean el ramo pasado
   function obtenerRequisitos(idDestino) {
     let reqs = [];
     ramos.forEach(r => {
@@ -47,3 +39,4 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     return reqs;
   }
+});
