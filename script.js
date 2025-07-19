@@ -40,6 +40,32 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
     return reqs;
+
+    function actualizarBloqueos() {
+  ramos.forEach(destino => {
+    // Obtener requisitos (ramos que abren este destino)
+    const requisitos = obtenerRequisitos(destino.id);
+
+    if (requisitos.length > 0) {
+      // Si tiene requisitos, evaluar si todos están aprobados
+      const todosAprobados = requisitos.every(idR => {
+        const r = document.getElementById(idR);
+        return r && r.classList.contains("aprobado");
+      });
+
+      if (todosAprobados) {
+        destino.classList.remove("bloqueado");
+      } else {
+        destino.classList.add("bloqueado");
+        destino.classList.remove("aprobado"); // No puede estar aprobado si bloqueado
+      }
+    } else {
+      // Si NO tiene requisitos, dejar como desbloqueado (sin bloquear)
+      destino.classList.remove("bloqueado");
+    }
+  });
+}
+
   }
 });
 
