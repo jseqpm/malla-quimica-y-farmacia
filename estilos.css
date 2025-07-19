@@ -33,9 +33,10 @@ h1 {
 
 .semestre {
   display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
-  gap: 12px;
-  padding-left: 10px;
+  gap: 10px;
+  margin-bottom: 30px;
 }
 
 .ramo {
